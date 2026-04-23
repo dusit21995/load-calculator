@@ -4,110 +4,111 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Advanced Load Calculator</title>
+<title>Advanced Load Calculator V3</title>
 <link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="style.css">
 <meta name="theme-color" content="#0f172a">
 </head>
+
 <body>
 
 <div class="container">
-    <h1>⚡ Advanced Load Calculator</h1>
 
-    <div class="card">
-        <h2>ตั้งค่าการคำนวณ</h2>
+<h1>⚡ Advanced Load Calculator</h1>
 
-        <div class="grid">
+<div class="card">
 
-            <div>
-                <label>ประเภทโหลด</label>
-                <select id="loadType">
-                    <option value="R">R Load (Resistive)</option>
-                    <option value="L">L Load (Inductive)</option>
-                </select>
-            </div>
+<h2>ตั้งค่าการคำนวณ</h2>
 
-            <div>
-                <label>ระบบไฟฟ้า</label>
-                <select id="phase">
-                    <option value="1">1 Phase</option>
-                    <option value="3">3 Phase</option>
-                </select>
-            </div>
+<div class="grid">
 
-            <div>
-                <label>ต้องการหา</label>
-                <select id="mode" onchange="updateInputs()">
-                    <option value="A">Current (Amp)</option>
-                    <option value="kW">Power (kW)</option>
-                    <option value="HP">Horsepower (HP)</option>
-                </select>
-            </div>
+<div>
+<label>ประเภทโหลด</label>
+<select id="loadType" onchange="updateUI()">
+<option value="R">R Load (Resistive)</option>
+<option value="L">L Load (Inductive)</option>
+</select>
+</div>
 
-            <div>
-                <label>Voltage (V)</label>
-                <input type="number" id="volt" value="400">
-            </div>
+<div>
+<label>ระบบไฟฟ้า</label>
+<select id="phase">
+<option value="1">1 Phase</option>
+<option value="3">3 Phase</option>
+</select>
+</div>
 
-            <div id="kwBox">
-                <label>Power (kW)</label>
-                <input type="number" id="kw" value="5">
-            </div>
+<div>
+<label>ต้องการหา</label>
+<select id="mode" onchange="updateUI()">
+<option value="A">Amp (A)</option>
+<option value="kW">Power (kW)</option>
+<option value="HP">Horsepower (HP)</option>
+</select>
+</div>
 
-            <div id="ampBox">
-                <label>Current (A)</label>
-                <input type="number" id="ampInput" value="10">
-            </div>
+<div>
+<label>Voltage (V)</label>
+<input type="number" id="volt" value="400">
+</div>
 
-            <div>
-                <label>Power Factor</label>
-                <input type="number" id="pf" value="0.85" step="0.01">
-            </div>
+<div>
+<label id="mainInputLabel">Power (kW)</label>
+<input type="number" id="mainInput" value="5">
+</div>
 
-            <div>
-                <label>Overload (%)</label>
-                <input type="number" id="overloadPercent" value="125">
-            </div>
+<div id="pfContainer">
+<label>Power Factor</label>
+<input type="number" id="pf" value="0.85" step="0.01">
+</div>
 
-        </div>
+<div>
+<label>Overload (%)</label>
+<input type="number" id="overloadPercent" value="125">
+</div>
 
-        <button onclick="calculate()">คำนวณ</button>
-    </div>
+</div>
 
-    <div class="results">
+<button onclick="calculate()">คำนวณ</button>
 
-        <div class="result-box">
-            <span>Amp</span>
-            <strong id="ampResult">0 A</strong>
-        </div>
+</div>
 
-        <div class="result-box">
-            <span>kW</span>
-            <strong id="kwResult">0 kW</strong>
-        </div>
+<div class="results">
 
-        <div class="result-box">
-            <span>HP</span>
-            <strong id="hpResult">0 HP</strong>
-        </div>
+<div class="result-box">
+<span>Amp</span>
+<strong id="ampResult">0 A</strong>
+</div>
 
-        <div class="result-box">
-            <span>Overload</span>
-            <strong id="overloadResult">0 A</strong>
-        </div>
+<div class="result-box">
+<span>kW</span>
+<strong id="kwResult">0 kW</strong>
+</div>
 
-        <div class="result-box">
-            <span>Recommended Cable</span>
-            <strong id="cableResult">-</strong>
-        </div>
+<div class="result-box">
+<span>HP</span>
+<strong id="hpResult">0 HP</strong>
+</div>
 
-    </div>
+<div class="result-box">
+<span>Overload</span>
+<strong id="overloadResult">0 A</strong>
+</div>
+
+<div class="result-box">
+<span>Recommended Cable</span>
+<strong id="cableResult">-</strong>
+</div>
+
+</div>
+
 </div>
 
 <script src="script.js"></script>
+
 <script>
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('service-worker.js');
+ navigator.serviceWorker.register('service-worker.js');
 }
 </script>
 

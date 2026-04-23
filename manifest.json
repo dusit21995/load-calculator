@@ -1,16 +1,16 @@
 
 {
-  "name":"Advanced Load Calculator",
-  "short_name":"LoadCalc",
-  "start_url":"./index.html",
-  "display":"standalone",
-  "background_color":"#0f172a",
-  "theme_color":"#0f172a",
-  "icons":[
-    {
-      "src":"icon-192.png",
-      "sizes":"192x192",
-      "type":"image/png"
-    }
-  ]
+"name":"Advanced Load Calculator",
+"short_name":"LoadCalc",
+"start_url":"./index.html",
+"display":"standalone",
+"background_color":"#0f172a",
+"theme_color":"#0f172a",
+"icons":[
+{
+"src":"icon-192.png",
+"sizes":"192x192",
+"type":"image/png"
+}
+]
 }
