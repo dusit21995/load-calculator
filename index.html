@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Load Calculator Pro</title>
+
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0f172a">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>⚡ Load Calculator Pro</h1>
+
+    <div class="card">
+      <h2>Electrical Load Calculator</h2>
+
+      <div class="grid">
+        <div>
+          <label>กำลังไฟฟ้า (kW)</label>
+          <input type="number" id="kw" value="7.5">
+        </div>
+
+        <div>
+          <label>แรงดันไฟฟ้า (V)</label>
+          <input type="number" id="volt" value="400">
+        </div>
+
+        <div>
+          <label>Power Factor</label>
+          <input type="number" id="pf" value="0.85" step="0.01">
+        </div>
+
+        <div>
+          <label>ระบบไฟฟ้า</label>
+          <select id="phase">
+            <option value="1">1 Phase</option>
+            <option value="3" selected>3 Phase</option>
+          </select>
+        </div>
+      </div>
+
+      <button onclick="calculate()">คำนวณ</button>
+    </div>
+
+    <div class="results">
+      <div class="result-box">
+        <span>Amp</span>
+        <strong id="amp">0 A</strong>
+      </div>
+
+      <div class="result-box">
+        <span>HP</span>
+        <strong id="hp">0 HP</strong>
+      </div>
+
+      <div class="result-box">
+        <span>Overload</span>
+        <strong id="overload">0 A</strong>
+      </div>
+
+      <div class="result-box">
+        <span>Recommended Cable</span>
+        <strong id="cable">-</strong>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
+</body>
+</html>
