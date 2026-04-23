@@ -1,58 +1,61 @@
 
-const CACHE_NAME = "loadcalc-v4";
+const CACHE_NAME = "dusit-loadcalc-v5";
 
 const urlsToCache = [
-  "./",
-  "./index.html",
-  "./style.css",
-  "./script.js",
-  "./manifest.json",
-  "./icon-192.png",
-  "./icon-512.png"
+"./",
+"./index.html",
+"./style.css",
+"./manifest.json",
+"./icon-192.png",
+"./icon-512.png",
+"./logo.png"
 ];
 
 self.addEventListener("install", event => {
-  self.skipWaiting();
 
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(urlsToCache))
-  );
+self.skipWaiting();
+
+event.waitUntil(
+caches.open(CACHE_NAME)
+.then(cache => cache.addAll(urlsToCache))
+);
+
 });
 
 self.addEventListener("activate", event => {
 
-  event.waitUntil(
-    caches.keys().then(keys => {
-      return Promise.all(
-        keys.map(key => {
-          if(key !== CACHE_NAME){
-            return caches.delete(key);
-          }
-        })
-      );
-    })
-  );
+event.waitUntil(
+caches.keys().then(keys => {
+return Promise.all(
+keys.map(key => {
+if(key !== CACHE_NAME){
+return caches.delete(key);
+}
+})
+);
+})
+);
 
-  self.clients.claim();
+self.clients.claim();
+
 });
 
 self.addEventListener("fetch", event => {
 
-  event.respondWith(
-    fetch(event.request)
-      .then(response => {
+event.respondWith(
+fetch(event.request)
+.then(response => {
 
-        const responseClone = response.clone();
+const clone = response.clone();
 
-        caches.open(CACHE_NAME).then(cache => {
-          cache.put(event.request, responseClone);
-        });
+caches.open(CACHE_NAME).then(cache => {
+cache.put(event.request, clone);
+});
 
-        return response;
+return response;
 
-      })
-      .catch(() => caches.match(event.request))
-  );
+})
+.catch(() => caches.match(event.request))
+);
 
 });
