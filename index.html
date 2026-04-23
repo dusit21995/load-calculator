@@ -18,12 +18,101 @@
 
 <div class="title-bar">
     <img src="logo.png" class="logo">
-    <h1>Dusit Load Calculator</h1>
+    <div>
+        <h1>Dusit Load Calculator</h1>
+        <p class="subtitle">Automation & Industrial Electrical Calculator</p>
+    </div>
 </div>
 
-<p class="subtitle">Electrical Load Calculator for Automation & Industrial</p>
+<div class="card">
+
+<h2>ตั้งค่าการคำนวณ</h2>
+
+<div class="grid">
+
+<div>
+<label>ประเภทโหลด</label>
+<select id="loadType" onchange="updateUI()">
+<option value="R">R Load (Resistive)</option>
+<option value="L">L Load (Inductive)</option>
+</select>
+</div>
+
+<div>
+<label>ระบบไฟฟ้า</label>
+<select id="phase">
+<option value="1">1 Phase</option>
+<option value="3">3 Phase</option>
+</select>
+</div>
+
+<div>
+<label>ต้องการหา</label>
+<select id="mode" onchange="updateUI()">
+<option value="A">Amp (A)</option>
+<option value="kW">Power (kW)</option>
+<option value="HP">Horsepower (HP)</option>
+</select>
+</div>
+
+<div>
+<label>Voltage (V)</label>
+<input type="number" id="volt" value="400">
+</div>
+
+<div>
+<label id="mainInputLabel">Power (kW)</label>
+<input type="number" id="mainInput" value="5">
+</div>
+
+<div>
+<label>Power Factor</label>
+<input type="number" id="pf" value="0.85" step="0.01">
+</div>
+
+<div>
+<label>Overload (%)</label>
+<input type="number" id="overloadPercent" value="125">
+</div>
 
 </div>
+
+<button onclick="calculate()">คำนวณ</button>
+
+</div>
+
+<div class="results">
+
+<div class="result-box">
+<span>Amp</span>
+<strong id="ampResult">0 A</strong>
+</div>
+
+<div class="result-box">
+<span>kW</span>
+<strong id="kwResult">0 kW</strong>
+</div>
+
+<div class="result-box">
+<span>HP</span>
+<strong id="hpResult">0 HP</strong>
+</div>
+
+<div class="result-box">
+<span>Overload</span>
+<strong id="overloadResult">0 A</strong>
+</div>
+
+<div class="result-box">
+<span>Recommended Cable</span>
+<strong id="cableResult">-</strong>
+</div>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
 
 <script>
 if ('serviceWorker' in navigator) {
