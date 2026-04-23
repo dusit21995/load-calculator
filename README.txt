@@ -1,9 +1,17 @@
-วิธีใช้งานบน iPhone/iPad
 
-1. แตกไฟล์ ZIP
-2. อัปโหลดไฟล์ทั้งหมดขึ้น Web Hosting หรือ GitHub Pages
-3. เปิดผ่าน Safari
-4. กด Share
-5. เลือก Add to Home Screen
+Auto Update Version
 
-แอปจะถูกติดตั้งเหมือน App จริงบน iPhone/iPad
+สิ่งที่เพิ่ม:
+- Auto Update Cache
+- Auto Clear Old Cache
+- เปลี่ยน Icon ใหม่ Dusit Automation
+
+วิธีอัปเดต:
+1. Upload ไฟล์ทั้งหมดทับของเดิมใน GitHub
+2. Commit changes
+3. รอประมาณ 30-60 วินาที
+4. รีเฟรชเว็บ
+
+ถ้า icon ยังไม่เปลี่ยน:
+- ลบ App เดิมจาก Home Screen
+- Add to Home Screen ใหม่
